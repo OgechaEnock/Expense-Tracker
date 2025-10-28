@@ -52,7 +52,7 @@ function App() {
   const [sortField, setSortField] = useState('date');
   const [sortOrder, setSortOrder] = useState('desc');
 
-  // Add new expense
+  // Adds new expense
   const addExpense = (newExpense) => {
     const expense = {
       ...newExpense,
@@ -62,7 +62,7 @@ function App() {
     setExpenses([...expenses, expense]);
   };
 
-  // Delete expense
+  // Deletes an expense
   const deleteExpense = (id) => {
     if (window.confirm('Are you sure you want to delete this expense?')) {
       setExpenses(expenses.filter(expense => expense.id !== id));
@@ -89,7 +89,7 @@ function App() {
     );
   });
 
-  // Sort filtered expenses
+  // This part is for Sorting filtered expenses
   const sortedExpenses = [...filteredExpenses].sort((a, b) => {
     if (!sortField) return 0;
     
@@ -106,7 +106,7 @@ function App() {
     return 0;
   });
 
-  // Calculate statistics
+  // Calculate statistics and averages
   const totalAmount = sortedExpenses.reduce((sum, exp) => sum + exp.amount, 0);
   const expenseCount = sortedExpenses.length;
   const averageExpense = expenseCount > 0 ? totalAmount / expenseCount : 0;
@@ -115,7 +115,7 @@ function App() {
     <div className="App">
       <div className="container">
         <header className="header">
-          <h1>💰 Expense Tracker</h1>
+          <h1> Expense Tracker</h1>
           <p>Start taking control of your finances and life. Record, categorize and analyze your spending.</p>
         </header>
 
@@ -127,15 +127,15 @@ function App() {
           <div className="table-section">
             <div className="stats-row">
               <div className="stat-card">
-                <div className="stat-label">📊 Total Expenses</div>
+                <div className="stat-label"> Total Expenses</div>
                 <div className="stat-value">{expenseCount}</div>
               </div>
               <div className="stat-card">
-                <div className="stat-label">💵 Total Amount</div>
+                <div className="stat-label"> Total Amount</div>
                 <div className="stat-value">KSh {totalAmount.toLocaleString()}</div>
               </div>
               <div className="stat-card">
-                <div className="stat-label">📈 Average</div>
+                <div className="stat-label"> Average</div>
                 <div className="stat-value">
                   KSh {averageExpense.toLocaleString(undefined, {maximumFractionDigits: 0})}
                 </div>
